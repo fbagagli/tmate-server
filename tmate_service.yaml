@@ -1,0 +1,15 @@
+version: '3'
+services:
+  tmate:
+    image: tmate/tmate-ssh-server
+    ports:
+      - '2222:2222'
+    volumes:
+      - <full path to keys directory>:/keys
+    environment:
+      - SSH_KEYS_PATH=/keys
+      - SSH_HOSTNAME=<ip / hostname>
+      - SSH_PORT_LISTEN=2222
+    cap_add:
+      - SYS_ADMIN
+    restart: always
